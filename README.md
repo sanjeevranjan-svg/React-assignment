@@ -2,6 +2,87 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installing Playwright browsers
+
+Install the configured Chromium and Firefox browsers (run once per machine or
+after upgrading Playwright):
+
+```powershell
+npm run playwright:install
+```
+
+The install script enables Node.js system certificate trust for Windows
+environments that inspect HTTPS traffic. If your organization requires a custom
+certificate, install it in the Windows certificate store or set
+`NODE_EXTRA_CA_CERTS` to a readable PEM file.
+
+## Playwright end-to-end tests
+
+The Playwright configuration starts the Create React App development server
+automatically at `http://127.0.0.1:3000`, runs tests in Chromium and Firefox, and
+writes an HTML report to `playwright-report/`.
+
+Run all tests:
+
+```powershell
+npm run test:e2e
+```
+
+Run a specific test file or test by name:
+
+```powershell
+npx playwright test tests/home.spec.ts
+npx playwright test -g "homepage displays the React application"
+```
+
+Run tests in headed mode, UI mode, or debug mode:
+
+```powershell
+npm run test:e2e:headed
+npm run test:e2e:ui
+npm run test:e2e:debug
+```
+
+Run against a specific browser:
+
+```powershell
+npm run test:e2e:chromium
+npm run test:e2e:firefox
+```
+
+Run with two, four, or one worker (one worker runs tests sequentially):
+
+```powershell
+npm run test:e2e:workers:2
+npm run test:e2e:workers:4
+npm run test:e2e:workers:1
+```
+
+View the most recent HTML report after a test run:
+
+```powershell
+npm run test:e2e:report
+```
+
+### Generate tests with Codegen
+
+Start the app in one terminal, then launch Codegen in another:
+
+```powershell
+npm start
+npm run test:e2e:codegen
+```
+
+Use the opened browser to interact with the app. Codegen records actions and
+generates Playwright test code in the Inspector.
+
+### GitHub Actions
+
+The workflow in `.github/workflows/playwright.yml` checks out the repository,
+sets up Node.js, installs npm dependencies and the Playwright browsers, builds
+the React app, runs the tests (which start the app automatically), and uploads
+the HTML report as a workflow artifact.
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -16,6 +16,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "playwright:install": "node --use-system-ca node_modules/playwright/cli.js install chromium firefox",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:chromium": "playwright test --project=chromium",
+    "test:e2e:firefox": "playwright test --project=firefox",
+    "test:e2e:workers:2": "playwright test --workers=2",
+    "test:e2e:workers:4": "playwright test --workers=4",
+    "test:e2e:workers:1": "playwright test --workers=1",
+    "test:e2e:codegen": "playwright codegen http://127.0.0.1:3000",
+    "test:e2e:report": "playwright show-report",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,5 +47,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.3"
   }
 }
