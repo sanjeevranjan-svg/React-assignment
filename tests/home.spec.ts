@@ -9,8 +9,8 @@ test('homepage loads successfully', async ({ page }) => {
 test('application displays the React application', async ({ page }) => {
   await page.goto('/');
 
-  // await expect(
-  //   page.getByRole('link', { name: 'Learn React' }),
-  // ).toBeVisible();
-  await expect(page.getByText('SomethingThatDoesNotExist')).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: 'Learn React' }),
+  ).toBeVisible();
+  // await expect(page.getByText('SomethingThatDoesNotExist')).toBeVisible();
 });
